@@ -18,17 +18,17 @@ interface Options {
 export class ProductsService {
   private http = inject(HttpClient);
 
-  getProducts(options: Options): Observable<ProductsResponse> {
+  getProducts(options: Options): Observable<ProductsResponse[]> {
     const { limit = 9, page = 1, category = '' } = options;
 
     return this.http
-      .get<ProductsResponse>(`${baseUrl}/products`, {
+      .get<ProductsResponse[]>(`${baseUrl}/products`, {
         params: {
           limit,
           page,
           category,
         },
       })
-      .pipe(tap((resp) => console.log(resp)));
+      .pipe(tap());
   }
 }

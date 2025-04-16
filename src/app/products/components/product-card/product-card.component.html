@@ -1,18 +1,19 @@
 <div class="card bg-base-100 shadow-xl animate-fadeIn">
-  <figure>
+  <figure class="w-full h-64 overflow-hidden flex items-center justify-center">
     <img
-      src="https://img.daisyui.com/images/stock/photo-1606107557195-0e29a4b5b4aa.webp"
-      alt="Shoes"
+      class="h-full max-h-60 p-2 mx-auto object-contain rounded-md"
+      [src]="product().image"
+      [alt]="product().title"
     />
   </figure>
   <div class="card-body shadow-md">
-    <h2 class="card-title">Card Title</h2>
-    <p>
-      A card component has a figure, a body part, and inside body there are
-      title and actions parts
-    </p>
+    <h2 class="card-title">{{ product().title }}</h2>
+    <p>{{ product().description | slice : 0 : 70 }}...</p>
     <div class="card-actions justify-end">
-      <a class="btn btn-soft btn-secondary" [routerLink]="['/product', 't-shirt']">
+      <a
+        class="btn btn-soft btn-secondary"
+        [routerLink]="['/product', product().category]"
+      >
         Ver Producto
       </a>
     </div>
