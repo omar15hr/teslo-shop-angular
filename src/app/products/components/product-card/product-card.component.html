@@ -7,12 +7,14 @@
     />
   </figure>
   <div class="card-body shadow-md">
-    <h2 class="card-title">{{ product().title }}</h2>
+    <h2 class="card-title hover:underline hover:cursor-pointer" [routerLink]="['/product', product().id]">
+      {{ product().title }}
+    </h2>
     <p>{{ product().description | slice : 0 : 70 }}...</p>
     <div class="card-actions justify-end">
       <a
         class="btn btn-soft btn-secondary"
-        [routerLink]="['/product', product().category]"
+        [routerLink]="['/product', product().id]"
       >
         Ver Producto
       </a>

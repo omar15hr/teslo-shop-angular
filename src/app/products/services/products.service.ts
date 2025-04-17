@@ -31,4 +31,8 @@ export class ProductsService {
       })
       .pipe(tap());
   }
+
+  getProductById(id: number): Observable<ProductsResponse> {
+    return this.http.get<ProductsResponse>(`${baseUrl}/products/${id}`)
+  }
 }
