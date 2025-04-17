@@ -1,1 +1,15 @@
-<p>category-page works!</p>,
+<div class="p-5">
+  <h1 class="text-3xl font-bold font-montserrat">Todos los productos</h1>
+  <span class="text-primary font-montserrat">{{ category()}}</span>
+
+  <div
+    class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-3 mt-5"
+  >
+    @for (product of productsResource.value(); track $index) {
+      <product-card [product]="product" />
+    }
+    @empty {
+      <p>No hay productos</p>
+    }
+  </div>
+</div>

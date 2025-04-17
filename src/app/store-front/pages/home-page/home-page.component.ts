@@ -15,8 +15,6 @@ export class HomePageComponent {
     request: () => ({}),
     loader: ({ request }) => {
       return this.productsService.getProducts({});
-    }
+    },
   });
-
-  
 }
