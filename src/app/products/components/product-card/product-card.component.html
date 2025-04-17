@@ -2,19 +2,19 @@
   <figure class="w-full h-64 overflow-hidden flex items-center justify-center">
     <img
       class="h-full max-h-60 p-2 mx-auto object-contain rounded-xl"
-      [src]="product().image | productImage"
+      [src]="product().images | productImage"
       [alt]="product().title"
     />
   </figure>
   <div class="card-body shadow-md">
-    <h2 class="card-title hover:underline hover:cursor-pointer" [routerLink]="['/product', product().id]">
+    <h2 class="card-title hover:underline hover:cursor-pointer font-montserrat text-accent" [routerLink]="['/product', product().slug]">
       {{ product().title }}
     </h2>
     <p>{{ product().description | slice : 0 : 70 }}...</p>
     <div class="card-actions justify-end">
       <a
         class="btn btn-soft btn-secondary"
-        [routerLink]="['/product', product().id]"
+        [routerLink]="['/product', product().slug]"
       >
         Ver Producto
       </a>

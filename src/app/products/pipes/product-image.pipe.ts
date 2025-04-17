@@ -1,25 +1,23 @@
-import { Pipe, PipeTransform } from "@angular/core";
-import { environment } from "src/environments/environment";
+import { Pipe, PipeTransform } from '@angular/core';
+import { environment } from 'src/environments/environment';
 
 const baseUrl = environment.baseUrl;
 
 @Pipe({
-  name: "productImage",
+  name: 'productImage',
 })
 export class ProductImagePipe implements PipeTransform {
-  transform(value: string | string[] | null | undefined): string {
-    const placeholder = 'https://placehold.co/300x300?text=No+Image&font=montserrat&bold=true&text-color=888';
-
-    if (!value) return placeholder;
-
+  transform(value: string | string[]): string {
     if (typeof value === 'string') {
-      return value.trim() !== '' ? value : placeholder;
+      return `${baseUrl}/files/product/${value}`;
     }
 
-    if (Array.isArray(value) && value.length > 0 && value[0].trim() !== '') {
-      return value[0];
+    const image = value.at(0);
+
+    if (!image) {
+      return './assets/images/no-image.jpg';
     }
 
-    return placeholder;
+    return `${baseUrl}/files/product/${image}`;
   }
 }

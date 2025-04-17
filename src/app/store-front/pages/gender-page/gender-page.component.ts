@@ -3,23 +3,25 @@ import { rxResource, toSignal } from '@angular/core/rxjs-interop';
 import { ActivatedRoute } from '@angular/router';
 import { ProductsService } from '@products/services/products.service';
 import { map } from 'rxjs';
-import { ProductCardComponent } from '@products/components/product-card/product-card.component';
+import { ProductCardComponent } from "../../../products/components/product-card/product-card.component";
 
 @Component({
-  selector: 'app-category-page',
+  selector: 'app-gender-page',
   imports: [ProductCardComponent],
-  templateUrl: './category-page.component.html',
+  templateUrl: './gender-page.component.html',
 })
-export class CategoryPageComponent {
+export class GenderPageComponent {
   route = inject(ActivatedRoute);
   productsService = inject(ProductsService);
 
-  category = toSignal(this.route.params.pipe(map(({ category }) => category)));
+  gender = toSignal(this.route.params.pipe(map(({ gender }) => gender)));
 
   productsResource = rxResource({
-    request: () => ({ category: this.category() }),
+    request: () => ({ gender: this.gender() }),
     loader: ({ request }) => {
-      return this.productsService.getProductsByCategory(request.category);
+      return this.productsService.getProducts({
+        gender: request.gender,
+      });
     },
   });
 }
