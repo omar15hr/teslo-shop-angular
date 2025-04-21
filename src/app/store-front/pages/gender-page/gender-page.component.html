@@ -12,4 +12,11 @@
       <p>No hay productos</p>
     }
   </div>
+
+  <div class="text-center">
+    <app-pagination
+    [pages]="productsResource.value()?.pages ?? 0"
+    [currentPage]="paginationService.currentPage()"
+  />
+  </div>
 </div>
