@@ -5,10 +5,11 @@ import { rxResource, toSignal } from '@angular/core/rxjs-interop';
 import { PaginationComponent } from '../../../shared/components/pagination/pagination.component';
 import { ActivatedRoute } from '@angular/router';
 import { map } from 'rxjs';
+import { LoaderComponent } from '@shared/components/loader/loader.component';
 
 @Component({
   selector: 'app-home-page',
-  imports: [ProductCardComponent, PaginationComponent],
+  imports: [ProductCardComponent, PaginationComponent, LoaderComponent],
   templateUrl: './home-page.component.html',
 })
 export class HomePageComponent {

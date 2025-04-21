@@ -13,7 +13,9 @@
     @for (product of productsResource.value()?.products; track $index) {
     <product-card [product]="product" />
     } @empty {
-    <p>No hay productos</p>
+      <div class="col-span-full flex justify-center items-center min-h-[500px]">
+        <loader />
+      </div>
     }
   </div>
 </div>
